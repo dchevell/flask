@@ -20,9 +20,13 @@ Unreleased
     stricter about header encodings than PEP 3333. (`#2766`_)
 -   Allow custom CLIs using ``FlaskGroup`` to set the debug flag without
     it always being overwritten based on environment variables. (`#2765`_)
+-   :func:`flask.copy_current_request_context` adds a copy of the current
+    session object to the request context copy. This prevents
+    ``flask.session`` pointing to an out-of-date object. (`#2935`)
 
 .. _#2766: https://github.com/pallets/flask/issues/2766
 .. _#2765: https://github.com/pallets/flask/pull/2765
+.. _#2935: https://github.com/pallets/flask/issues/2935
 
 
 Version 1.0.2
@@ -345,7 +349,7 @@ Released on December 21st 2016, codename Punsch.
 - Add support for range requests in ``send_file``.
 - ``app.test_client`` includes preset default environment, which can now be
   directly set, instead of per ``client.get``.
-  
+
 .. _#1849: https://github.com/pallets/flask/pull/1849
 .. _#1988: https://github.com/pallets/flask/pull/1988
 .. _#1730: https://github.com/pallets/flask/pull/1730
@@ -366,7 +370,7 @@ Version 0.11.1
 Bugfix release, released on June 7th 2016.
 
 - Fixed a bug that prevented ``FLASK_APP=foobar/__init__.py`` from working. (`#1872`_)
-  
+
 .. _#1872: https://github.com/pallets/flask/pull/1872
 
 Version 0.11
@@ -446,7 +450,7 @@ Released on May 29th 2016, codename Absinthe.
 - Added the ``JSONIFY_MIMETYPE`` configuration variable (`#1728`_).
 - Exceptions during teardown handling will no longer leave bad application
   contexts lingering around.
-  
+
 .. _#1326: https://github.com/pallets/flask/pull/1326
 .. _#1393: https://github.com/pallets/flask/pull/1393
 .. _#1422: https://github.com/pallets/flask/pull/1422
